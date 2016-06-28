@@ -1,6 +1,11 @@
 {
   "name": "findTheWord",
   "version": "0.0.1",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/corneadoug/find-the-word.git"
+  },
   "devDependencies": {
     "grunt": "~0.4",
     "grunt-angular-templates": "~0.5",
