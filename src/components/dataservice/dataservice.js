@@ -12,8 +12,9 @@
     };
 
     function getScores() {
-      let limitToLast = 'limitToLast=50';
-      let orderBy = 'orderBy="score"';
+      // Using this instead of params since parameter's order is important in Firebase
+      var limitToLast = 'limitToLast=50';
+      var orderBy = 'orderBy="score"';
 
       return $http.get('https://findtheword-b856a.firebaseio.com/scores.json?' +
         orderBy + '&' + limitToLast
@@ -26,7 +27,12 @@
       }
 
       function getScoresSuccess(response) {
-        return response.data;
+        // Transform Firebase Data into a classic Array ordered by score
+        // Add add an index for the score's rank
+        var result = _.each(_.orderBy(_.values(response.data), 'score', 'desc'), function(elt, i) {
+          elt.rank = i + 1;
+        });
+        return result;
       }
     }
   }

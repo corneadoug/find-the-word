@@ -1,7 +1,12 @@
 (function() {
   'use strict';
 
-  angular.module('findTheWord', ['ui.bootstrap', 'ngRoute', 'ngAnimate']);
+  angular.module('findTheWord', [
+    'ui.bootstrap',
+    'ngRoute',
+    'ngAnimate',
+    'data-table'
+  ]);
 
   angular.module('findTheWord')
     .config(AppConfig);
