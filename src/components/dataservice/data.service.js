@@ -6,8 +6,8 @@
 
   dataService.$inject = ['$http'];
 
-  function dataService($http, logger) {
-    return {
+  function dataService($http) {
+    var service = {
       getScores: getScores
     };
 
@@ -35,6 +35,8 @@
         return result;
       }
     }
+
+    return service;
   }
 
 })();

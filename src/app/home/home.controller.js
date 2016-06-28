@@ -4,9 +4,18 @@
   angular.module('findTheWord')
     .controller('HomeCtrl', HomeCtrl);
 
-  function HomeCtrl() {
+  HomeCtrl.$inject = ['playerService', '$location'];
+
+  function HomeCtrl(playerService, $location) {
     var vm = this;
-    vm.name = 'Woldeu';
+    vm.player = playerService;
+    vm.startTheGame = startTheGame;
+
+    function startTheGame() {
+      if (playerService.name) {
+        $location.path('/play');
+      }
+    }
   }
 
 })();
