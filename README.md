@@ -1,4 +1,5 @@
 # Find The Word
+
 Find The Word is a small project made with AngularJS 1.X
 
 It is a game where you have to rearrange the most words in 40secs

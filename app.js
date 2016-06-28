@@ -9,16 +9,24 @@
   angular.module('findTheWord')
     .run(RunUtils);
 
-  function AppConfig($routeProvider, $locationProvider) {
+  function AppConfig($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'src/app/home/home.html',
         controller: 'HomeCtrl',
         controllerAs: 'home',
       })
+      .when('/highscore', {
+        templateUrl: 'src/app/highscore/highscore.html',
+        controller: 'HighScoreCtrl',
+        controllerAs: 'highscore',
+      })
+      .when('/play', {
+        templateUrl: 'src/app/game/game.html',
+        controller: 'GameCtrl',
+        controllerAs: 'game',
+      })
       .otherwise({redirectTo:'/'});
-
-    $locationProvider.html5Mode(true);
   }
 
   function RunUtils($rootScope) {
