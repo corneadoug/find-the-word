@@ -9,7 +9,7 @@
   function playerService() {
     var service = {};
     service.flushPlayer = flushPlayer;
-    service.name = 'Teddy';
+    service.name = '';
     service.setPlayer = setPlayer;
 
     function flushPlayer() {

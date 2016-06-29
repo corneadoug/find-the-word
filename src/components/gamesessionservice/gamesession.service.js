@@ -25,7 +25,7 @@
     service.reset = reset;
     service.startTimer = startTimer;
     service.stopTimer = stopTimer;
-    service.timeLeft = 20;
+    service.timeLeft = 40;
     service.timer = null;
     service.wordResult = [];
 
@@ -48,7 +48,6 @@
       service.gameErrors = 0;
       var word = wordsService.getWordAt(service.currentWordIdx);
       if (word) {
-        console.log('word? %o', word);
         service.wordResult = new Array(word.length);
         service.letters = _.shuffle(word.split(''));
       } else {

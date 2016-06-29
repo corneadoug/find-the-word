@@ -17,12 +17,10 @@
   function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService, wordsService, ngToast) {
     var vm = this;
     vm.cleanLettersArray = cleanLettersArray;
-    vm.decreaseTimer = decreaseTimer;
     vm.player = playerService;
     vm.points = pointsService;
     vm.removeLetter = removeLetter;
     vm.session = gameSessionService;
-    vm.timer = 40;
     vm.validateWord = validateWord;
 
     init();
@@ -33,11 +31,6 @@
       } else {
         $location.path('/');
       }
-    }
-
-    function decreaseTimer() {
-      vm.timer -= 5;
-      console.log('timer? %o', vm.timer);
     }
 
     function cleanLettersArray() {
