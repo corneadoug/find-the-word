@@ -2,6 +2,7 @@
 @import "bower_components/font-awesome/less/font-awesome.less";
 @import "bower_components/angular-data-table/release/dataTable.css";
 @import "bower_components/angular-data-table/release/material.css";
+@import "bower_components/ngtoast/dist/ngToast.min.css";
 
 @import "variables.less";
 /* Add App LESS files below */
@@ -27,6 +28,20 @@ body {
 
 .lobsterFont {
   font-family: 'Lobster', Arial, serif;
+}
+
+.ng-toast__message {
+  .alert {
+    color: white;
+    border: none;
+  }
+  .alert-danger {
+    background-color: #C15856;
+  }
+
+  .alert-success {
+    background-color: #7fb380;
+  }
 }
 
 /* Required for Angular UI Bootstrap */

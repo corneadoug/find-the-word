@@ -4,9 +4,9 @@
   angular.module('findTheWord')
     .controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['playerService', '$location', 'wordsService'];
+  HomeCtrl.$inject = ['playerService', '$location', 'wordsService', 'ngToast'];
 
-  function HomeCtrl(playerService, $location, wordsService) {
+  function HomeCtrl(playerService, $location, wordsService, ngToast) {
     var vm = this;
     vm.player = playerService;
     vm.startTheGame = startTheGame;

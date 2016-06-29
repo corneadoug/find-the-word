@@ -6,7 +6,8 @@
     'ngRoute',
     'ngAnimate',
     'data-table',
-    'ngDragDrop'
+    'ngDragDrop',
+    'ngToast'
   ]);
 
   angular.module('findTheWord')

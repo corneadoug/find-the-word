@@ -4,9 +4,9 @@
   angular.module('findTheWord')
     .factory('dataService', dataService);
 
-  dataService.$inject = ['$http'];
+  dataService.$inject = ['$http', 'ngToast'];
 
-  function dataService($http) {
+  function dataService($http, ngToast) {
     var service = {
       getScores: getScores,
       getWords: getWords
@@ -24,6 +24,7 @@
       .catch(getScoresError);
 
       function getScoresError(error) {
+        ngToast.danger({content: 'We couldn\'t fetch the scores'});
         console.log('getScores Failed.' + error.data);
       }
 
@@ -45,6 +46,7 @@
       .catch(getWordsError);
 
       function getWordsError(error) {
+        ngToast.danger({content: 'We couldn\'t fetch the words'});
         console.log('getWords Failed.' + error.data);
       }
 

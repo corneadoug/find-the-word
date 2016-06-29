@@ -4,9 +4,9 @@
   angular.module('findTheWord')
     .factory('gameSessionService', gameSessionService);
 
-  gameSessionService.$inject = ['pointsService', 'wordsService'];
+  gameSessionService.$inject = ['pointsService', 'wordsService', 'ngToast'];
 
-  function gameSessionService(pointsService, wordsService) {
+  function gameSessionService(pointsService, wordsService, ngToast) {
     var service = {};
     service.currentWordIdx = -1;
     service.gameErrors = 0;
@@ -23,7 +23,7 @@
         service.gameStatus = 'ongoing';
         service.nextWord();
       } else {
-        console.log('No Words to play with, Can\'t start');
+        ngToast.danger({content: 'No Words to play with, Can\'t start :('});
       }
     }
 

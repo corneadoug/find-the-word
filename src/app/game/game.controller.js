@@ -10,10 +10,11 @@
     'pointsService',
     '$location',
     'gameSessionService',
-    'wordsService'
+    'wordsService',
+    'ngToast'
   ];
 
-  function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService, wordsService) {
+  function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService, wordsService, ngToast) {
     var vm = this;
     vm.session = gameSessionService;
     vm.cleanLettersArray = cleanLettersArray;
@@ -46,12 +47,13 @@
     function validateWord() {
       var finalWord = _.map(gameSessionService.wordResult).join('');
       if (finalWord === wordsService.list[gameSessionService.currentWordIdx].word) {
+        ngToast.success({content: 'Nice! One Down!'});
         pointsService.addGamePoints(
           pointsService.calculateWordMaxScore(finalWord.length) + (gameSessionService.gameErrors * -1)
         );
         gameSessionService.nextWord();
       } else {
-        console.log('Wrong word!');
+        ngToast.danger({content: 'Wrong word! Try again'});
       }
     }
   }
