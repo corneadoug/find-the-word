@@ -11,6 +11,9 @@
     vm.player = playerService;
     vm.points = pointsService;
     vm.words = [];
+    vm.word = 'pizza';
+    vm.letters = _.shuffle(vm.word.split(''));
+    vm.result = new Array(vm.word.length);
 
     init();
 

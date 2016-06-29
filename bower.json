@@ -21,6 +21,7 @@
     "moment": "~2.12",
     "less.js": "~2.6",
     "font-awesome": "~4.5",
-    "angular-data-table": "^0.5.2"
+    "angular-data-table": "^0.5.2",
+    "angular-dragdrop": "^1.0.13"
   }
 }
