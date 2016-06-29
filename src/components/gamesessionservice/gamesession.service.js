@@ -4,9 +4,16 @@
   angular.module('findTheWord')
     .factory('gameSessionService', gameSessionService);
 
-  gameSessionService.$inject = ['pointsService', 'wordsService', 'ngToast', '$interval'];
+  gameSessionService.$inject = [
+    'pointsService',
+    'wordsService',
+    'ngToast',
+    '$interval',
+    'playerService',
+    'dataService'
+  ];
 
-  function gameSessionService(pointsService, wordsService, ngToast, $interval) {
+  function gameSessionService(pointsService, wordsService, ngToast, $interval, playerService, dataService) {
     var service = {};
     service.currentWordIdx = -1;
     service.gameErrors = 0;
@@ -76,6 +83,7 @@
     function stopTimer() {
       $interval.cancel(service.timer);
       service.gameStatus = 'finished';
+      dataService.sendScores({name: playerService.name, score: pointsService.total});
     }
 
     return service;

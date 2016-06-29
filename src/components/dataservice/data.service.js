@@ -9,7 +9,8 @@
   function dataService($http, ngToast) {
     var service = {
       getScores: getScores,
-      getWords: getWords
+      getWords: getWords,
+      sendScores: sendScores
     };
 
     function getScores() {
@@ -55,6 +56,20 @@
         // Shuffle the array
         var result = _.shuffle(_.values(response.data));
         return result;
+      }
+    }
+
+    function sendScores(data) {
+      $http.post('https://findtheword-b856a.firebaseio.com/scores.json', data)
+      .then(scorePostedSuccess)
+      .catch(scorePostedError);
+
+      function scorePostedError() {
+        ngToast.danger({content: 'Sorry, We couldn\'t post you score to the scoreboard'});
+      }
+
+      function scorePostedSuccess() {
+        ngToast.success({content: 'Your score was saved, are you in the Top50?'});
       }
     }
 
