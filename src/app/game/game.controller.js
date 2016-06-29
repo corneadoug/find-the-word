@@ -8,13 +8,14 @@
 
   function GameCtrl(dataService, playerService, pointsService, $location) {
     var vm = this;
+    vm.cleanLettersArray = cleanLettersArray;
     vm.letters = [];
     vm.player = playerService;
     vm.points = pointsService;
+    vm.removeLetter = removeLetter;
     vm.result = [];
     vm.validateWord = validateWord;
     vm.word = '';
-    vm.wordFilled = false;
     vm.words = [];
 
 
@@ -35,11 +36,21 @@
       }
     }
 
+    function cleanLettersArray() {
+      vm.letters = _.compact(vm.letters);
+    }
+
     function loadWords() {
       dataService.getWords()
         .then(function(data) {
           vm.words = data;
         });
+    }
+
+    function removeLetter(index) {
+      vm.letters.push(vm.result[index]);
+      vm.cleanLettersArray();
+      vm.result[index] = undefined;
     }
 
     function validateWord() {
