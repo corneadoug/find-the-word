@@ -7,7 +7,7 @@
   playerService.$inject = [];
 
   function playerService() {
-    var name = '';
+    var name = 'Teddy';
     var service = {
       flushPlayer: flushPlayer,
       name: name,

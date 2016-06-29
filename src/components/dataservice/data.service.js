@@ -8,7 +8,8 @@
 
   function dataService($http) {
     var service = {
-      getScores: getScores
+      getScores: getScores,
+      getWords: getWords
     };
 
     function getScores() {
@@ -32,6 +33,25 @@
         var result = _.each(_.orderBy(_.values(response.data), 'score', 'desc'), function(elt, i) {
           elt.rank = i + 1;
         });
+        return result;
+      }
+    }
+
+    function getWords() {
+      // Getting everyword since there is only 20
+      // In case of a bigger list we would do a RAND() + LIMIT() in the query
+      return $http.get('https://findtheword-b856a.firebaseio.com/words.json')
+      .then(getWordsSuccess)
+      .catch(getWordsError);
+
+      function getWordsError(error) {
+        console.log('getWords Failed.' + error.data);
+      }
+
+      function getWordsSuccess(response) {
+        // Transform Firebase Data into a classic Array
+        // Shuffle the array
+        var result = _.shuffle(_.values(response.data));
         return result;
       }
     }
