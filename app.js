@@ -7,7 +7,8 @@
     'ngAnimate',
     'data-table',
     'ngDragDrop',
-    'ngToast'
+    'ngToast',
+    'angular-svg-round-progressbar'
   ]);
 
   angular.module('findTheWord')

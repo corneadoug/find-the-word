@@ -2,23 +2,27 @@
   <div class="gameHeader myBox lobsterFont">
     <div class="row">
       <div class="col-xs-4 col-md-3 text-left">
-        Timer
+        <div class="timeProgress-wrapper">
+            <div class="timeProgress ng-cloak">{{game.session.timeLeft}}</div>
+            <round-progress max="40" current="game.session.timeLeft" color="white" bgcolor="transparent"
+                radius="26" stroke="4" rounded="rounded" clockwise="false"
+                responsive="responsive" duration="800" nimation="easeInOutCubic"
+                offset="0" animation-delay="0" on-render="showPreciseCurrent">
+            </round-progress>
+        </div>
       </div>
-      <div class="col-xs-4 col-md-6 text-center playerName">
+      <div class="col-xs-4 col-md-6 text-center playerName" style="padding-top: 10px;">
         {{game.player.name}}
       </div>
-      <div class="col-xs-4 col-md-3 text-right">
+      <div class="col-xs-4 col-md-3 text-right" style="padding-top: 10px;">
         <span class="totalScore">{{game.points.total}}</span> Points
       </div>
     </div>
-    <div class="row">
-      <button ng-click="game.session.gameStart()" class="btn btn-primary">
-        Start
-      </button>
-      <button ng-click="game.session.gameStop()" class="btn btn-primary">
-        Stop
-      </button>
-    </div>
   </div>
+
+  <ng-include ng-show="game.session.gameStatus === 'ready'" src="'src/app/game/game-startmsg.html'"></ng-include>
+
+  <ng-include ng-show="game.session.gameStatus === 'finished'" src="'src/app/game/game-stopmsg.html'"></ng-include>
+
   <ng-include ng-hide="game.session.gameStatus === 'ready'" src="'src/app/game/game-board.html'"></ng-include>
 </div>

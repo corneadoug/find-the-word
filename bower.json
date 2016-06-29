@@ -23,6 +23,7 @@
     "font-awesome": "~4.5",
     "angular-data-table": "^0.5.2",
     "angular-dragdrop": "^1.0.13",
-    "ngToast": "ngtoast#^2.0.0"
+    "ngToast": "ngtoast#^2.0.0",
+    "angular-svg-round-progressbar": "^0.4.4"
   }
 }

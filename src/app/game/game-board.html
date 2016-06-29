@@ -16,7 +16,7 @@
   <div class="divider">
     <hr/>
     <div class="buttonContainer">
-      <button ng-click="game.validateWord()" ng-class="{'disabled': game.session.gameStatus !== 'ongoing' || game.session.letters.length > 0}"
+      <button ng-click="game.validateWord()" ng-disabled="game.session.gameStatus !== 'ongoing' || game.session.letters.length > 0"
               class="btn btn-lg btn-primary">
         Validate
       </button>

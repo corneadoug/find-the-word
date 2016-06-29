@@ -9,10 +9,55 @@
     font-size: 16px;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 
+    .timeProgress-wrapper {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      font-size: 40px;
+    }
+
+    .timeProgress {
+      top: 48%;
+      bottom: auto;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      position: absolute;
+      color: white;
+      font-weight: 100;
+      line-height: 1;
+      font-size: 24px;
+    }
+
     .playerName,
     .totalScore {
       font-size: 24px;
       font-weight: bold;
+    }
+  }
+
+  .msgOverlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(117,192,195, 0.7);
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    left: 0;
+  }
+
+  .messageBox {
+    margin-left: auto;
+    margin-right:auto;
+    width: 500px;
+    padding: 30px 40px;
+    font-size: 16px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+
+    .boxTitle {
+      font-size: 36px;
+      margin-bottom: 20px;
     }
   }
 
@@ -31,7 +76,7 @@
         top: 0;
 
         button {width: 160px;}
-        button.disabled {
+        button[disabled] {
           background-color: @blue2;
           border-color: white;
           opacity: 1;

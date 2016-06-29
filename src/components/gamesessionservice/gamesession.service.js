@@ -4,24 +4,29 @@
   angular.module('findTheWord')
     .factory('gameSessionService', gameSessionService);
 
-  gameSessionService.$inject = ['pointsService', 'wordsService', 'ngToast'];
+  gameSessionService.$inject = ['pointsService', 'wordsService', 'ngToast', '$interval'];
 
-  function gameSessionService(pointsService, wordsService, ngToast) {
+  function gameSessionService(pointsService, wordsService, ngToast, $interval) {
     var service = {};
     service.currentWordIdx = -1;
     service.gameErrors = 0;
     service.gameStart = gameStart;
     service.gameStatus = 'ready';
     service.gameStop = gameStop;
+    service.letters = [];
     service.nextWord = nextWord;
     service.reset = reset;
+    service.startTimer = startTimer;
+    service.stopTimer = stopTimer;
+    service.timeLeft = 20;
+    service.timer = null;
     service.wordResult = [];
-    service.letters = [];
 
     function gameStart() {
       if (wordsService.list.length > 0) {
         service.gameStatus = 'ongoing';
         service.nextWord();
+        service.startTimer();
       } else {
         ngToast.danger({content: 'No Words to play with, Can\'t start :('});
       }
@@ -47,6 +52,30 @@
 
     function reset() {
       pointsService.flushPoints();
+      wordsService.shuffleWords();
+      service.currentWordIdx = -1;
+      service.gameErrors = 0;
+      service.letters = [];
+      service.timeLeft = 40;
+      service.timer = null;
+      service.wordResult = [];
+      service.gameStart();
+    }
+
+    function startTimer() {
+      service.timer = $interval(function () {
+        if (service.timeLeft - 1 >= 0) {
+          service.timeLeft -= 1;
+          if (service.timeLeft === 0) {
+            service.stopTimer();
+          }
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      $interval.cancel(service.timer);
+      service.gameStatus = 'finished';
     }
 
     return service;
