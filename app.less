@@ -1,13 +1,21 @@
 @import "bower_components/bootstrap/less/bootstrap.less";
-//@import "bower_components/bootstrap/less/theme.less";
 @import "bower_components/font-awesome/less/font-awesome.less";
 @import "bower_components/angular-data-table/release/dataTable.css";
 @import "bower_components/angular-data-table/release/material.css";
 
+/* Add App LESS files below */
+@import "src/app/home/home.less";
+
+/* Add Fonts below */
 @fa-font-path: "bower_components/font-awesome/fonts";
 
 /* Component LESS */
 /* Add Component LESS Above */
+
+body {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #75c0c3;
+}
 
 /* Required for Angular UI Bootstrap */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

@@ -1,0 +1,62 @@
+#home-page {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  .gameTitle {
+    font-family: 'Lobster', Arial, serif;
+
+    .title {
+      font-size: 42px;
+    }
+  }
+
+  .divider {
+    height: 30px;
+  }
+
+  .highscoreLink {
+    font-size: 12px;
+    text-decoration: underline;
+    color: white;
+    padding-top: 5px;
+    display: block;
+  }
+
+  .vertical-center {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .centralDiv {
+    margin-left: auto;
+    margin-right:auto;
+    text-align:center;
+    width: 740px;
+    background-color: #75c8cc;
+    color: white;
+    padding: 60px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+    .form-control {
+      border-color: #65b5b9;
+      &:focus {box-shadow: none;}
+    }
+
+    .form-group {
+      margin-bottom: 0px;
+    }
+
+    .has-error {
+      height: 15px;
+      margin-bottom: 5px;
+      font-size: 12px;
+
+      .help-block {
+        margin: 0;
+      }
+    }
+  }
+
+}

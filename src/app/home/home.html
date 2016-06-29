@@ -1,28 +1,15 @@
-<h5>Find The Words</h5>
+<div id="home-page">
+  <div class="vertical-center">
+    <div class="centralDiv">
+      <div class="gameTitle">
+        <div class="title">Find The Words</div>
+        <div class="subTitle">A small word puzzle game</div>
+      </div>
+      <div class="divider"></div>
 
-Hello {{home.player.name}}
-
-<form name="playerForm" ng-submit="home.startTheGame()" novalidate>
-  <div class="form-group">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="My name is ..."
-      name="playerName"
-      ng-model="home.player.name"
-      ng-trim="false"
-      ng-minlength="3"
-      ng-maxlength="20"
-      ng-pattern="/^[a-zA-Z0-9]*$/"
-      required />
+      <h5>Choose a username</h5>
+      <ng-include src="'src/app/home/home-userform.html'"></ng-include>
+      <a class="highscoreLink" href="#highscore">Highscore</a>
+    </div>
   </div>
-  <div class="has-error">
-    <p class="help-block">
-      <span ng-show="playerForm.playerName.$error.minlength">Username is too short.</span>
-      <span ng-show="playerForm.playerName.$error.maxlength">Username is too long.</span>
-      <span ng-show="playerForm.playerName.$error.pattern">Username must be letters and numbers only.</span>
-      <span ng-show="playerForm.$submitted && playerForm.playerName.$error.required">Your username is required.</span>
-    </p>
-  </div>
-  <button type="submit" class="btn btn-info">Play</button>
-</form>
+</div>
