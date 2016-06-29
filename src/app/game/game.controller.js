@@ -4,11 +4,18 @@
   angular.module('findTheWord')
     .controller('GameCtrl', GameCtrl);
 
-  GameCtrl.$inject = ['dataService', 'playerService', 'pointsService', '$location'];
+  GameCtrl.$inject = [
+    'dataService',
+    'playerService',
+    'pointsService',
+    '$location',
+    'gameSessionService'
+  ];
 
-  function GameCtrl(dataService, playerService, pointsService, $location) {
+  function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService) {
     var vm = this;
     vm.cleanLettersArray = cleanLettersArray;
+    vm.game = gameSessionService;
     vm.letters = [];
     vm.player = playerService;
     vm.points = pointsService;
