@@ -7,19 +7,22 @@
   pointsService.$inject = [];
 
   function pointsService() {
-    var total = 0;
-    var service = {
-      addPoints: addPoints,
-      flushPoints: flushPoints,
-      total: total
-    };
+    var service = {};
+    service.total = 0;
+    service.addGamePoints = addGamePoints;
+    service.calculateWordMaxScore = calculateWordMaxScore;
+    service.flushPoints = flushPoints;
 
     function flushPoints() {
-      total = 0;
+      service.total = 0;
     }
 
-    function addPoints(newPoints) {
-      total += newPoints;
+    function addGamePoints(newPoints) {
+      service.total += newPoints > 0 ? newPoints : 0;
+    }
+
+    function calculateWordMaxScore(length) {
+      return length > 0 ? Math.floor(Math.pow(1.95, (length/3))) : 0;
     }
 
     return service;

@@ -7,19 +7,17 @@
   playerService.$inject = [];
 
   function playerService() {
-    var name = 'Teddy';
-    var service = {
-      flushPlayer: flushPlayer,
-      name: name,
-      setPlayer: setPlayer
-    };
+    var service = {};
+    service.flushPlayer = flushPlayer;
+    service.name = 'Teddy';
+    service.setPlayer = setPlayer;
 
     function flushPlayer() {
-      name = '';
+      service.name = '';
     }
 
     function setPlayer(playerName) {
-      name = playerName;
+      service.name = playerName;
     }
 
     return service;
