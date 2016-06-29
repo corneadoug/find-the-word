@@ -1,0 +1,33 @@
+<div class="gameBoard">
+  <ul class="toFill">
+    <li ng-repeat="slot in game.session.wordResult track by $index" class="letterDropContainer"
+        data-drop="true" ng-model="game.session.wordResult[$index]" data-jqyoui-options
+        jqyoui-droppable="{onDrop: 'game.cleanLettersArray'}">
+      <div class="btn btn-primary letterDragContainer" data-drag="false" data-jqyoui-options
+           ng-model="game.session.wordResult[$index]" jqyoui-draggable ng-if="game.session.wordResult[$index] !== undefined">
+        <span class="letter">{{game.session.wordResult[$index]}}</span>
+      </div>
+      <div ng-show="game.session.wordResult[$index] !== undefined" class="overlayBtn" ng-click="game.removeLetter($index)">
+        <i class="fa fa-remove"></i>
+      </div>
+    </li>
+  </ul>
+
+  <div class="divider">
+    <hr/>
+    <div class="buttonContainer">
+      <button ng-click="game.validateWord()" ng-class="{'disabled': game.session.gameStatus !== 'ongoing' || game.session.letters.length > 0}"
+              class="btn btn-lg btn-primary">
+        Validate
+      </button>
+    </div>
+  </div>
+
+  <div class="toDrag">
+    <div ng-repeat="letter in game.session.letters track by $index" ng-model="game.session.letters[$index]"
+         class="btn btn-primary letterDragContainer" data-drag="true" jqyoui-draggable
+         data-jqyoui-options="{revert: 'invalid'}" ng-hide="!game.session.letters[$index]">
+      <span class="letter">{{letter}}</span>
+    </div>
+  </div>
+</div>

@@ -9,59 +9,50 @@
     'playerService',
     'pointsService',
     '$location',
-    'gameSessionService'
+    'gameSessionService',
+    'wordsService'
   ];
 
-  function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService) {
+  function GameCtrl(dataService, playerService, pointsService, $location, gameSessionService, wordsService) {
     var vm = this;
+    vm.session = gameSessionService;
     vm.cleanLettersArray = cleanLettersArray;
-    vm.game = gameSessionService;
-    vm.letters = [];
     vm.player = playerService;
     vm.points = pointsService;
     vm.removeLetter = removeLetter;
-    vm.result = [];
     vm.validateWord = validateWord;
-    vm.word = '';
-    vm.words = [];
-
 
     init();
 
     function init() {
       if (playerService.name) {
         pointsService.flushPoints();
-        loadWords();
-
-        // Temporary init until game logic is here
-        vm.word = 'pizza';
-        vm.result = new Array(vm.word.length);
-        vm.letters = _.shuffle(vm.word.split(''));
-
       } else {
         $location.path('/');
       }
     }
 
     function cleanLettersArray() {
-      vm.letters = _.compact(vm.letters);
-    }
-
-    function loadWords() {
-      dataService.getWords()
-        .then(function(data) {
-          vm.words = data;
-        });
+      gameSessionService.letters = _.compact(gameSessionService.letters);
     }
 
     function removeLetter(index) {
-      vm.letters.push(vm.result[index]);
+      gameSessionService.letters.push(gameSessionService.wordResult[index]);
       vm.cleanLettersArray();
-      vm.result[index] = undefined;
+      gameSessionService.wordResult[index] = undefined;
+      gameSessionService.gameErrors += 1;
     }
 
     function validateWord() {
-
+      var finalWord = _.map(gameSessionService.wordResult).join('');
+      if (finalWord === wordsService.list[gameSessionService.currentWordIdx].word) {
+        pointsService.addGamePoints(
+          pointsService.calculateWordMaxScore(finalWord.length) + (gameSessionService.gameErrors * -1)
+        );
+        gameSessionService.nextWord();
+      } else {
+        console.log('Wrong word!');
+      }
     }
   }
 
