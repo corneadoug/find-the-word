@@ -3,6 +3,7 @@
 @import "bower_components/angular-data-table/release/dataTable.css";
 @import "bower_components/angular-data-table/release/material.css";
 
+@import "variables.less";
 /* Add App LESS files below */
 @import "src/app/home/home.less";
 @import "src/app/game/game.less";
@@ -10,16 +11,13 @@
 /* Add Fonts below */
 @fa-font-path: "bower_components/font-awesome/fonts";
 
-/* Component LESS */
-/* Add Component LESS Above */
-
 body {
   font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #75c0c3;
+  background-color: @blue1;
 }
 
 .myBox {
-  background-color: #75c8cc;
+  background-color: @blue2;
   color: white;
 }
 

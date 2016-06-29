@@ -27,6 +27,13 @@
       </li>
     </ul>
 
+    <div class="divider">
+      <hr/>
+      <div class="buttonContainer">
+        <button ng-click="game.validateWord()" ng-class="{'disabled': !game.wordFilled}" class="btn btn-lg btn-primary">Validate</button>
+      </div>
+    </div>
+
     <div class="toDrag">
       <div ng-repeat="letter in game.letters track by $index" ng-model="game.letters[$index]"
            class="btn btn-primary letterDragContainer" data-drag="true" jqyoui-draggable="{animate:true}"
