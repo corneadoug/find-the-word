@@ -5,4 +5,19 @@ node {
     // on windows
     // env.PATH="${env.NODEJS_HOME};${env.PATH}"
     sh 'npm --version'
+    
+    stage('DL') {
+      checkout scm
+      sh 'npm install'
+      sh 'bower install'
+    }
+    
+    stage('Build') {
+      sh 'grunt build'
+    }
+
+    stage('Test') {
+      sh 'grunt test'
+    }
+
 }
